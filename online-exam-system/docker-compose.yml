@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.3
+    container_name: nacos-server
+    environment:
+      - MODE=standalone
+      - JVM_XMS=512m
+      - JVM_XMX=512m
+    ports:
+      - "8848:8848"
+      - "9848:9848" # Nacos gRPC通信端口
+    restart: always
+
+  sentinel-dashboard:
+    image: bladex/sentinel-dashboard:1.8.6
+    container_name: sentinel-dashboard
+    ports:
+      - "8088:8080" # sentinel dashboard
+    restart: always
+
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql-exam
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+
+  redis:
+    image: redis:6.2.12
+    container_name: redis-exam
+    ports:
+      - "6379:6379"
+    restart: always
+
+volumes:
+  mysql-data:

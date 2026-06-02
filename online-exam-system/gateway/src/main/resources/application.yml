@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**, /api/auth/**
+        - id: exam-route
+          uri: lb://exam-service
+          predicates:
+            - Path=/api/exam/**
+        - id: question-route
+          uri: lb://question-service
+          predicates:
+            - Path=/api/question/**
+        - id: score-route
+          uri: lb://score-service
+          predicates:
+            - Path=/api/score/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
