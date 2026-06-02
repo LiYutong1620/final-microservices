@@ -9,6 +9,17 @@ module.exports = {
           '^/api': '/api'
         }
       }
+    },
+    client:{
+        overlay:{
+            runtimeErrors:(error)=>{
+                const message = error.message || '';
+                if(message.includes('ResizeObserver loop completed with undelivered notifications')){
+                    return false;
+                }
+                return true;
+            }
+        }
     }
   }
 }

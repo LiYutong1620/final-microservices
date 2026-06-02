@@ -1,7 +1,58 @@
-target/
+# ========== 编译输出 ==========
+**/target/
+**/bin/
+frontend/dist/
+frontend/build/
+
+# ========== IDE ==========
 .idea/
 *.iml
 .classpath
 .project
 .settings/
-log/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ========== 依赖 ==========
+frontend/node_modules/
+
+# ========== 日志 ==========
+logs/
+**/logs/
+*.log
+
+# ========== 系统文件 ==========
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========== 敏感配置 ==========
+application-local.yml
+application-dev.yml
+application-prod.yml
+bootstrap-local.yml
+**/.env
+**/.env.local
+**/.env.*.local
+*.key
+*.p12
+*.jks
+
+# ========== Maven 临时文件 ==========
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+
+# ========== 前端额外 ==========
+frontend/.cache/
+frontend/.temp/
+frontend/coverage/
+frontend/.nyc_output/
+
+# ========== 其他 ==========
+*.bak
+*.orig
