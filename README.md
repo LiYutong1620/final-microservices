@@ -31,7 +31,7 @@
    
 
    应看到 `mysql-exam`、`redis-exam`、`nacos-server`、`sentinel-dashboard` 均为 `Up` 状态。
-4. **验证所有容器运行**(可选)：
+4. **SQL端口映射修改**(可选)：
 
    ```
    ports:
